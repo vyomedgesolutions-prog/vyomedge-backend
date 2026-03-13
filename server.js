@@ -10,8 +10,9 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:3000',
-    process.env.FRONTEND_URL
-  ].filter(Boolean),
+    'https://vyomedge-website.vercel.app',
+    'https://vyomedge-admin.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
