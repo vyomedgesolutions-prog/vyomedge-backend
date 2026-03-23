@@ -1,4 +1,3 @@
-cat > /workspaces/vyomedge-backend/server.js << 'EOF'
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -34,7 +33,7 @@ app.use('/api/inquiries', require('./routes/inquiries'));
 app.use('/api/subscribers', require('./routes/subscribers'));
 
 app.get('/', (req, res) => {
-  res.json({ 
+  res.json({
     message: 'VyomEdge API is running!',
     version: '1.0.0',
     endpoints: {
@@ -61,4 +60,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
-EOF
