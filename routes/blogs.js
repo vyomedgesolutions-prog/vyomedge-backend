@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(parseInt(limit))
-      .select('-content');
+      .select('-content'); // This is fine - list doesn't need full content
 
     const total = await Blog.countDocuments(query);
 
@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
 });
 
 // @route   GET /api/blogs/slug/:slug
-// @desc    Get blog by slug (public)
+// @desc    Get blog by slug (public) - RETURNS FULL CONTENT
 // @access  Public
 router.get('/slug/:slug', async (req, res) => {
   try {
@@ -67,7 +67,8 @@ router.get('/slug/:slug', async (req, res) => {
     blog.views += 1;
     await blog.save();
 
-    res.json({ blog });
+    // Return blog directly (not wrapped) for easier frontend consumption
+    res.json(blog);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
