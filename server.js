@@ -32,6 +32,7 @@ app.use('/api/services', require('./routes/services'));
 app.use('/api/inquiries', require('./routes/inquiries'));
 app.use('/api/subscribers', require('./routes/subscribers'));
 app.use('/sitemap.xml', require('./routes/sitemap'));
+app.use('/crawl', require('./routes/crawl'));
 
 app.get('/', (req, res) => {
   res.json({
